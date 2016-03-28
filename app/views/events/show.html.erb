@@ -9,7 +9,7 @@
 <div class="event-details">
   <h1><%= @event.name %></h1>
   <p><h3>Summary</h3><%= @event.summary %></p>
-  <p><h3>Description</h3><%= @event.description %></p>
+  <p><h3>Description</h3><%= raw @event.description %></p>
   <h3>Category</h3><%= @event.event_type_name %>
   <p><h3>Time</h3>
   <strong>Start at </strong><h6 class="card-subtitle text-muted"><%= @event.start_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
