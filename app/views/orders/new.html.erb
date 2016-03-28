@@ -1,3 +1,6 @@
+<div class="container">
+
+
 <%= @order.errors.full_messages.join(",") %>
 <%= form_for [@event, @order], html: { id: 'order_form' } do |f| %>
     <table class="table table-striped">
@@ -43,3 +46,4 @@
   });
 
 </script>
+</div>

@@ -34,12 +34,23 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @types = EventType.all
+    @locations = Location.all
   end
 
   def update
     @event = Event.find(params[:id])
+    if params[:event][:start_at] != ''
+
+      params[:event][:start_at] = DateTime.strptime(params[:event][:start_at], '%m/%d/%Y %l:%M %p')
+    end
+
+    if params[:event][:end_at]!= ''
+
+      params[:event][:end_at] = DateTime.strptime(params[:event][:end_at], '%m/%d/%Y %l:%M %p')
+    end
+    byebug
     if @event.update_attributes(event_params)
-      redirect_to events_index_path
+      redirect_to events_path
     end
   end
 

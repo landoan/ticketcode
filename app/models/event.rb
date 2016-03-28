@@ -21,6 +21,6 @@ class Event < ActiveRecord::Base
   end
 
   def related_events
-    Event.where('location_id = ? AND event_type_id = ?', location_id, event_type_id)
+    Event.where('location_id = ? AND event_type_id = ? AND id <> ? ', location_id, event_type_id, id)
   end
 end
