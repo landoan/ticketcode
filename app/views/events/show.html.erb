@@ -1,0 +1,23 @@
+<div class="event-booking-details text-xs-center">
+    <% @event.ticket_types.each do |t| %>
+      <p><strong><%= t.name %></strong>: <%= number_to_currency(t.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></p>
+    <% end %>
+  <a href="<%= new_event_order_path(@event) %>" class='btn btn-success btn-block'>Book now</a>
+
+</div>
+
+<div class="event-details">
+  <h1><%= @event.name %></h1>
+  <p><%= @event.summary %></p>
+  <p><%= @event.description %></p>
+  <h4><%= @event.event_type_name %></h4>
+  <div class="col-md-6">
+    <strong>Start at </strong><h6 class="card-subtitle text-muted"><%= @event.start_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+
+  </div>
+  <div class="col-md-6">
+
+    <strong>End at </strong><h6 class="card-subtitle text-muted"><%= @event.end_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+  </div>
+</div>
+

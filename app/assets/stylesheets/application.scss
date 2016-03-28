@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require jquery-ui
+ *= require bootstrap-typeahead-rails
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+
+@font-face {
+  font-family: josefin;
+  src: font-url('JosefinSans-Regular.eot');
+  src: font-url('JosefinSans-Regular.ttf') format('truetype'),
+  font-url('JosefinSans-Regular.eot?#iefix') format('embedded-opentype'),
+  font-url('JosefinSans-Regular.woff') format('woff'),
+  font-url('JosefinSans-Regular.svg#webfont') format('svg');
+}
+
+@font-face {
+  font-family: josefinBold;
+  src: font-url('JosefinSans-Bold.eot');
+  src: font-url('JosefinSans-Bold.ttf') format('truetype'),
+  font-url('JosefinSans-Bold.eot?#iefix') format('embedded-opentype'),
+  font-url('JosefinSans-Bold.woff') format('woff'),
+  font-url('JosefinSans-Bold.svg#webfont') format('svg');
+}
+
+body, p, a{
+  font-family: josefin;
+}
+
+h1, h2, h3, h4, h5, h6, strong, .bold-text {
+  font-family: josefinBold;
+}
+
+/*welcome page*/
+.header-intro{
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.wrapper-intro{
+  width: 100%;
+  background-color: #2E2F30;
+  float: left;
+}
+#login_form, #register_form{
+  color: #fff;
+}
+#intro_part{
+  padding: 20px 125px;
+  min-height: 500px;
+  h1{
+    color: #fff;
+    font-size: 50px;
+    margin-top: 100px;
+  }
+}
+
+.top_img_event{
+  background-image: image-url('event_home.jpg');
+  width: 100%;
+  height: 400px;
+  .container{
+    text-align: center;
+    padding-top: 100px;
+  }
+}
+
+#nav-container {
+  width: 100%;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+.main-navigation{
+  background-color: #212121;
+  color: #fff;
+  .navbar-light {
+    text-align: center;
+    margin-bottom: 0;
+    padding: 10px;
+    .navbar-nav .nav-link {
+      color: #fff;
+      padding: 10px;
+    }
+  }
+  .navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: 2px solid #fff;
+  }
+}
+.event-list{
+  padding: 50px;
+}
+
+.event-row{
+  padding: 20px;
+}
+.event-booking-details{
+  width: 30%;
+  float: left;
+  height: 500px;
+  position: fixed;
+}
+
+.event-details{
+  width: 70%;
+  float: right;
+}

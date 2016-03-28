@@ -1,0 +1,45 @@
+<%= @order.errors.full_messages.join(",") %>
+<%= form_for [@event, @order], html: { id: 'order_form' } do |f| %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Ticket Type</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= f.fields_for :tickets, @tickets do |field| %>
+        <%= field.hidden_field :ticket_type_id %>
+          <tr data-price="<%= field.object.price %>" class="quantity_type">
+            <td><%= field.object.name %></td>
+            <td><%= number_to_currency(field.object.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></td>
+            <td>
+              <%= field.select :quantity, 0..field.object.max_available_order %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <fieldset>
+      <label for="total_order">Total</label>
+      <input name="total_order" id="total_order" disabled type="text" />
+    </fieldset>
+    <%= f.submit 'Book', class:'btn btn-primary' %>
+<% end %>
+
+<script>
+  $(function () {
+    $("#order_form select").change(function () {
+      var total = 0;
+      $.each($("#order_form select"), function(i, select){
+        var $select = $(select);
+        var quantity = parseInt($select.val());
+        var price = parseFloat($select.parents(".quantity_type").data('price'));
+        total += quantity * price;
+      });
+      $('#total_order').val(total);
+    });
+  });
+
+</script>

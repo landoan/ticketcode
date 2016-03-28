@@ -1,0 +1,41 @@
+<h4><%= @event.name %></h4>
+<h5>Ticket types</h5>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Ticket type</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @ticket_types.each do |t| %>
+      <tr>
+        <td><%= t.name %></td>
+        <td><%= t.quantity %></td>
+        <td><%= number_to_currency(t.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></td>
+      </tr>
+
+  <% end %>
+
+  </tbody>
+</table>
+<h5>Add ticket types</h5>
+<%= form_for(:ticket_type, :url => {:controller => 'ticket_types', :action => 'create'}) do |f| %>
+    <fieldset class="form-group">
+      <label for="name">Type Name: </label>
+      <%= f.text_field :name, id: "name", class: "form-control", placeholder: "type name" %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="quantity">Quantity: </label>
+      <%= f.number_field :quantity, id: "quantity", class: "form-control", placeholder: "quantity" %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="price">Price: </label>
+      <%= f.number_field :price, id: "price", class: "form-control", placeholder: "price" %>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Create</button>
+<% end %>

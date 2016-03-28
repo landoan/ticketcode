@@ -1,0 +1,47 @@
+<div class="container event-list">
+  <% count = 1 %>
+  <% @events.each do |e| %>
+      <% if count ==1 %>
+          <div class="row event-row">
+      <% end %>
+      <div class="grid-item col-md-6">
+        <% if e.event_image && e.event_image!='' %>
+            <%= image_tag(e.event_image, class: "card-img-top", width: "500", height: "250") %>
+        <% else %>
+            <%= image_tag("http://lorempixel.com/200/200/", class: "card-img-top", width: "300", height: "300") %>
+        <% end %>
+        <div class="card-block">
+          <%= link_to e do %>
+              <h4 class="card-title"><%= e.name %></h4>
+          <% end %>
+          <div class="row">7
+            <div class="col-md-6">
+              <strong>Start at </strong><h6 class="card-subtitle text-muted"><%= e.start_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+
+            </div>
+            <div class="col-md-6">
+
+              <strong>End at </strong><h6 class="card-subtitle text-muted"><%= e.end_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+            </div>
+          </div>
+          <p class="card-text"><%= e.summary %></p>
+        </div>
+
+        <div class="card-block">
+          <a href="<%= events_edit_path(:id => e.id) %>" class='btn btn-primary'>Edit</a>
+          <% if e.ticket_types.size >0 && e.is_published != true %>
+          <a href="<%= events_publish_path(:id => e.id) %>" class='btn btn-success'>Publish</a>
+          <% elsif e.ticket_types.size == 0 %>
+          Add at least one ticket type to publish the event
+          <% end %>
+        </div>
+      </div>
+      <% if count == 2 %>
+          </div>
+          <% count = 1 %>
+      <% else %>
+          <% count = count+1 %>
+      <% end %>
+
+  <% end %>
+</div>

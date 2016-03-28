@@ -1,0 +1,74 @@
+<h1>Events#new</h1>
+<div class="container">
+  <%= form_for @event do |f| %>
+      <% if f.object.errors.any? %>
+          <ul>
+            <% f.object.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+      <% end %>
+          <fieldset class="form-group">
+            <label for="name">Event name </label>
+            <%= f.text_field 'name', placeholder: 'Enter event name here', class:'form-control'  %>
+          </fieldset>
+      <fieldset class="form-group">
+        <label for="summary">Summary</label>
+        <%= f.text_area 'summary', placeholder:"Enter your event summary here", class:"form-control", rows: '5' %>
+        <div id="summary_feedback"></div>
+      </fieldset>
+          <fieldset class="form-group">
+            <label for="description">Description</label>
+            <%= f.text_area 'description', placeholder:"Enter your description here", class:"form-control", rows: '10' %>
+          </fieldset>
+      <fieldset class="form-group">
+        <label for="event_type_id">Example select</label>
+        <select class="form-control" id="event_type_id" name="[event]event_type_id">
+          <% @types.each do |t| %>
+            <option value="<%= t.id %>"><%= t.name %></option>
+          <% end %>
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+
+        <%= f.file_field :event_image  %>
+
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="start_at">Start at</label>
+        <div style='position:relative;'>
+          <%= f.text_field :start_at, placeholder: 'Enter start time here', class:'form-control', value: f.object.start_at.try(:strftime, '%m/%d/%Y %l:%M %p') %>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="end_at">End at</label>
+        <div style='position:relative;'>
+          <%= f.text_field :end_at, placeholder: 'Enter end time here', class:'form-control', value: f.object.end_at.try(:strftime, '%m/%d/%Y %l:%M %p')  %>
+        </div>
+      </fieldset>
+
+        <script type="text/javascript">
+          $(function () {
+            $('#event_start_at').datetimepicker();
+            $('#event_end_at').datetimepicker();
+            $('#event_description').wysihtml5();
+
+            var text_max = 99;
+            $('#summary_feedback').html(text_max + ' characters remaining');
+
+            $('#event_summary').keyup(function() {
+              var text_length = $('#event_summary').val().length;
+              var text_remaining = text_max - text_length;
+
+              $('#summary_feedback').html(text_remaining + ' characters remaining');
+            });
+          });
+        </script>
+      <%= f.submit 'Create Event', class:'btn btn-success'  %>
+
+
+      <% end %>
+</div>
+
+
