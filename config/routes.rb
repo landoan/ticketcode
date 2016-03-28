@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'locations/index'
+
+  get 'locations/new'
+
+  get 'locations/create'
+
   devise_for :users
   resources :users, only: %i(index new create edit update)
   resources :events, except: [:destroy] do
@@ -11,7 +17,7 @@ Rails.application.routes.draw do
     resources :ticket_types
     resources :orders
   end
-
+  resources :locations
   get "events/view"
   get "events/edit"
   get "/events/show_mine" => 'events#show_mine'

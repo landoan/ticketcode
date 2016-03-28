@@ -94,6 +94,7 @@ h1, h2, h3, h4, h5, h6, strong, .bold-text {
     .navbar-nav .nav-link {
       color: #fff;
       padding: 10px;
+      text-decoration: none;
     }
   }
   .navbar-light .navbar-nav .nav-link:hover {
@@ -112,9 +113,26 @@ h1, h2, h3, h4, h5, h6, strong, .bold-text {
   float: left;
   height: 500px;
   position: fixed;
+  background: #212121;
+  color: #fff;
+  font-size: 23px;
+  text-align: center;
+  padding: 50px;
+  top: 0;
 }
 
 .event-details{
   width: 70%;
   float: right;
+  padding: 5px 50px 50px 50px;
+  p{
+    font-size: 16px;
+  }
+}
+.related-event-row{
+  border-bottom: 2px solid #B4A095;
+  padding: 10px 0;
+  .col-md-4{
+    padding-left: 0;
+  }
 }

@@ -1,0 +1,25 @@
+<div class="container">
+<h1>Locations#index</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Location name</th>
+      <th>Address</th>
+      <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @locations.each do |l| %>
+        <tr>
+          <td><%= l.name %></td>
+          <td><%= l.address %></td>
+          <td><%= l.city.name %></td>
+        </tr>
+
+    <% end %>
+
+    </tbody>
+  </table>
+  <%= link_to 'New Location', locations_new_path, class:"btn btn-primary btn-block" %>
+</div>
+

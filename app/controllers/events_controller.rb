@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def new
     @event = current_user.events.build
     @types = EventType.all
+    @locations = Location.all
   end
 
   def create
@@ -62,6 +63,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :event_type_id, :event_image, :start_at,:end_at, :summary)
+    params.require(:event).permit(:name, :description, :event_type_id, :event_image, :start_at,:end_at, :summary, :location_id)
   end
 end

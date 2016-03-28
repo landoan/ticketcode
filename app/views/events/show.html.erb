@@ -19,5 +19,38 @@
 
     <strong>End at </strong><h6 class="card-subtitle text-muted"><%= @event.end_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
   </div>
+
+  <div class="related-events">
+    <h2>Related Events</h2>
+    <% @event.related_events.each do |e| %>
+      <div class="row related-event-row">
+        <div class="col-md-4">
+          <% if e.event_image && e.event_image!='' %>
+              <%= image_tag(e.event_image, class: "card-img-top", width: "300", height: "200") %>
+          <% else %>
+              <%= image_tag("http://lorempixel.com/200/200/", class: "card-img-top", width: "200", height: "100") %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-block">
+            <%= link_to e do %>
+                <h4 class="card-title"><%= e.name %></h4>
+            <% end %>
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Start at </strong><h6 class="card-subtitle text-muted"><%= e.start_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+
+              </div>
+              <div class="col-md-6">
+
+                <strong>End at </strong><h6 class="card-subtitle text-muted"><%= e.end_at.try(:strftime, '%B-%d-%Y %l:%M %p') %></h6>
+              </div>
+            </div>
+            <p class="card-text"><%= e.summary %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 

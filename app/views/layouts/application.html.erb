@@ -11,7 +11,7 @@
 
 
 <div id="notice"><%= flash[:notice] %></div>
-<div id="alert"><%= flash[:alert] %></div>
+
 <% if current_user %>
 
     <div class="main-navigation">
@@ -20,6 +20,7 @@
           <%= link_to "Home", root_path, class: "nav-item nav-link" %>
           <%= link_to "New Event", new_event_path, class: "nav-item nav-link" %>
           <%= link_to "My Event", events_show_mine_path, class: "nav-item nav-link" %>
+          <%= link_to "Locations", locations_index_path, class: "nav-item nav-link" %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
           <div class="clearfix"></div>
         </div>

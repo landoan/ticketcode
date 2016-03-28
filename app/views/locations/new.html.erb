@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_for @location do |f| %>
+      <% if f.object.errors.any? %>
+          <ul>
+            <% f.object.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      <fieldset class="form-group">
+        <label for="name">Location name </label>
+        <%= f.text_field 'name', placeholder: 'Enter location name here', class:'form-control'  %>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="address">Location address </label>
+        <%= f.text_field 'address', placeholder: 'Enter location address here', class:'form-control'  %>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="city_id">Example select</label>
+        <select class="form-control" id="city_id" name="[location]city_id">
+          <% @cities.each do |c| %>
+              <option value="<%= c.id %>"><%= c.name %></option>
+          <% end %>
+        </select>
+      </fieldset>
+      <%= f.submit 'Save', class:'btn btn-success'  %>
+
+  <% end %>
+</div>
