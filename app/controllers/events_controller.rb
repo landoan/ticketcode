@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def create
     @types = EventType.all
     @event = current_user.events.build(event_params)
+    @locations = Location.all
     if params[:event][:start_at] != ''
 
       @event.start_at = DateTime.strptime(params[:event][:start_at], '%m/%d/%Y %l:%M %p')
