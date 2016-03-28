@@ -11,7 +11,7 @@ Submitted by: **Doan Phuong Lan**
 
 Time spent: **20** hours spent in total
 
-URL: **https://codercancook.herokuapp.com/**
+URL: **https://rocky-tundra-87340.herokuapp.com/**
 
 ## User Stories
 
@@ -56,15 +56,15 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 > HINT: You can put a `walkthrough.gif` file in your project folder, add to git, and use the following syntax to embed it:
-> `![Video Walkthrough](assignment_1_lan.gif)`
+> `![Video Walkthrough](assignment_3_lan.gif)`
 >
 
-![Video Walkthrough](assignment_1_lan.gif)
+![Video Walkthrough](assignment_3_lan.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Heroku app link
-https://codercancook.herokuapp.com/
+https://rocky-tundra-87340.herokuapp.com/
 ## Notes
 - tether problem
 - rails-ajax
