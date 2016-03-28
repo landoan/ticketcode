@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe LocationsController, type: :controller do
+  before do
+    user = create(:user)
+    sign_in user
+  end
 
   describe "GET #index" do
     it "returns http success" do
@@ -16,9 +20,12 @@ RSpec.describe LocationsController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
+    before(:each) do
+      post :create, location: attributes_for(:location), format: :js
+    end
     it "returns http success" do
-      get :create
+      post :create
       expect(response).to have_http_status(:success)
     end
   end

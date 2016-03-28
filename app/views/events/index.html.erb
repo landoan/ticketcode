@@ -1,12 +1,14 @@
 <div class="top_img_event">
   <div class="container">
     <h1> Discover upcoming events </h1>
-    <form>
-      <div id="bloodhound">
+    <form action="<%= search_events_path %>" method="get">
+      <div class="form-group">
 
-        <input type="text" class="form-control typeahead" name="search" placeholder="Search for events, shows, courses...">
+        <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search for events, shows, courses...">
       </div>
+      <button type="submit" class="btn btn-primary">Search</button>
     </form>
+
   </div>
 </div>
 

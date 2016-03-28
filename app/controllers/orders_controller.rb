@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     @order.attributes = order_params
 
     if @order.save
+      TicketMailer.send_message_email(@event, current_user, @order).deliver_now
       render 'thank_you'
     else
       render 'new'

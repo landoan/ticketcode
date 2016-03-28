@@ -1,4 +1,4 @@
-# Pre-work - *Lan Doan Ruby Blog*
+# Assignment 3 - *Lan Doan Ticket coder*
 
 > HINT: Please
 > - include this README.md in your project and fill out the information.

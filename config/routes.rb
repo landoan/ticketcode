@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'locations/index'
-
-  get 'locations/new'
-
-  get 'locations/create'
-
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: %i(index new create edit update)
   resources :events, except: [:destroy] do
     collection do
@@ -17,12 +11,18 @@ Rails.application.routes.draw do
     resources :ticket_types
     resources :orders
   end
-  resources :locations
+  resources :locations, only: [:index, :new, :create]
   get "events/view"
   get "events/edit"
   get "/events/show_mine" => 'events#show_mine'
   get "events/show" => 'events#show'
   get "/events/publish" => 'events#publish'
+  get 'locations/index'
+
+  get 'locations/new'
+
+  get 'locations/create'
+  get 'events/search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

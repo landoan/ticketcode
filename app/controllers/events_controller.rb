@@ -69,7 +69,8 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.where('name LIKE %?%', params[:search_text])
+    @events = Event.where('UPPER(name) LIKE UPPER(?)', "%#{params[:search_text]}%")
+    render 'index'
   end
 
   private
