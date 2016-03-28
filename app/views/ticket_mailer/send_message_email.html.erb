@@ -19,7 +19,7 @@
   <h2>Thanks for your event booking</h2>
   <h4>Your booking details</h4>
   <p><strong>Name: </strong><%= @order.user.name %></p>
-  <p><strong>Name: </strong><%= @order.user.email %></p>
+  <p><strong>Email: </strong><%= @order.user.email %></p>
   <p><strong>Event: </strong><%= @order.tickets.last.ticket_type.event.name %></p>
   <table class="table table-striped">
     <thead>
